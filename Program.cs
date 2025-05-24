@@ -66,16 +66,19 @@ namespace APIdIplom
 
             builder.Services.AddAuthorization();
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowFrontend",
-                    policy =>
-                    {
-                        policy.WithOrigins("https://localhost:7138")
-                              .AllowAnyHeader()
-                              .AllowAnyMethod();
-                    });
-            });
+      builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+            "https://localhost:7138", // локально
+            "https://request-contracts-client.onrender.com" // продакшн
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 
             var app = builder.Build();
 
