@@ -68,15 +68,14 @@ namespace APIdIplom
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy =>
-                {
-                    policy
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
+                options.AddPolicy("AllowFrontend",
+                    policy =>
+                    {
+                        policy.WithOrigins("https://localhost:7138")
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
             });
-            ;
 
             var app = builder.Build();
 
@@ -85,7 +84,7 @@ namespace APIdIplom
 
 
             app.UseHttpsRedirection();
-            app.UseCors("AllowAll");
+            app.UseCors("AllowFrontend");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
