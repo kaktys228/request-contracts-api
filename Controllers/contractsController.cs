@@ -20,6 +20,8 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO.Compression;
 using Color = Xceed.Drawing.Color;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Reflection;
+
 
 namespace APIdIplom.Controllers
 {
