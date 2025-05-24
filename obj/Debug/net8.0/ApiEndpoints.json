@@ -1,0 +1,1153 @@
+[
+  {
+    "ContainingType": "APIdIplom.Controllers.AnalyticsController",
+    "Method": "GetCategorySummary",
+    "RelativePath": "api/Analytics/category-summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AnalyticsController",
+    "Method": "GenerateCategoryReport",
+    "RelativePath": "api/Analytics/report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "firstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "middleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "lastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userRole",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/Autoresation/changePassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "changePasswordDto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BChangePasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "CheckGesture",
+    "RelativePath": "api/Autoresation/gesture-check",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BFaceLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "GetPasswordExpirySetting",
+    "RelativePath": "api/Autoresation/get-password-expiry",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "LogAttempt",
+    "RelativePath": "api/Autoresation/log-attempt",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BLoginAttemptDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "LogLogin",
+    "RelativePath": "api/Autoresation/log-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BActivityLogDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "LogLogout",
+    "RelativePath": "api/Autoresation/log-logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BActivityLogDto1",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "Login",
+    "RelativePath": "api/Autoresation/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BLoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "LoginByFace",
+    "RelativePath": "api/Autoresation/login-by-face",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BFaceLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "TogglePasswordExpiry",
+    "RelativePath": "api/Autoresation/toggle-password-expiry",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.AutoresationController\u002BToggleExpiryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.AutoresationController",
+    "Method": "ValidateToken",
+    "RelativePath": "api/Autoresation/validateToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "AddSupplier",
+    "RelativePath": "api/contracts/Addsuppliers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BSupplierDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "AddContract",
+    "RelativePath": "api/contracts/contracts",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BCreateContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetContractDetails",
+    "RelativePath": "api/contracts/details/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "ExportContractTemplate",
+    "RelativePath": "api/contracts/export-contract-template",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BExportContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "ExportContractTemplateECP",
+    "RelativePath": "api/contracts/export-contract-template_ECP",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BExportContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "ExportToWord",
+    "RelativePath": "api/contracts/export-to-word",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BExportContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "LinkSupplierToContract",
+    "RelativePath": "api/contracts/link-supplier/{contractId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contractId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BLinkSupplierDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "AddManualContract",
+    "RelativePath": "api/contracts/manual-contract",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BManualContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetContractQrCode",
+    "RelativePath": "api/contracts/qrcode/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetContractStatuses",
+    "RelativePath": "api/contracts/statuses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetAllSuppliers",
+    "RelativePath": "api/contracts/suppliers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetSupplier",
+    "RelativePath": "api/contracts/suppliers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "UpdateSupplier",
+    "RelativePath": "api/contracts/suppliers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BSupplierDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "UpdateItemPrice",
+    "RelativePath": "api/contracts/update-item-price/{requestItemId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestItemId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newPrice",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "UpdateContract",
+    "RelativePath": "api/contracts/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.contractsController\u002BContractDetailsDto1",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.contractsController",
+    "Method": "GetContractsWithDetails",
+    "RelativePath": "api/contracts/with-details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.PasswordResetController",
+    "Method": "RequestReset",
+    "RelativePath": "api/PasswordReset/requestReset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.PasswordResetController\u002BResetPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.PasswordResetController",
+    "Method": "VerifyCode",
+    "RelativePath": "api/PasswordReset/verifyCode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.PasswordResetController\u002BVerifyCodeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetRequestById",
+    "RelativePath": "api/Requests/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "SignRequest",
+    "RelativePath": "api/Requests/{id}/sign",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BSignRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/Requests/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BStatusUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "UpdateRequestStatus",
+    "RelativePath": "api/Requests/{id}/statusReq",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BUpdateStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "UpdateRequestItemsAdo",
+    "RelativePath": "api/Requests/{requestId}/update-items",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BUpdateRequestItemsRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "AddCategory",
+    "RelativePath": "api/Requests/add-category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Models.Category",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "AddCharacteristicToProduct",
+    "RelativePath": "api/Requests/add-characteristic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BAddCharacteristicDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "AddGroupProducts",
+    "RelativePath": "api/Requests/add-group-products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BGroupProductAddRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "AddUnit",
+    "RelativePath": "api/Requests/add-unit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Models.Unit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetAllCharacteristics",
+    "RelativePath": "api/Requests/all-characteristics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetAllTemplates",
+    "RelativePath": "api/Requests/allTemplates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Requests/allUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "ApproveProductRequestGroup",
+    "RelativePath": "api/Requests/approve-product-request-group/{groupId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "BindCharacteristicToProduct",
+    "RelativePath": "api/Requests/bind-characteristic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BBindCharacteristicModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetAllCategories",
+    "RelativePath": "api/Requests/categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "ExportToWord",
+    "RelativePath": "api/Requests/ExportToWord",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BExportRequestDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "withSignature",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "FinalizeProductRequestGroup",
+    "RelativePath": "api/Requests/finalize-product-request-group/{groupId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetArchives",
+    "RelativePath": "api/Requests/GetArchives",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetUserFullName",
+    "RelativePath": "api/Requests/GetUserFullName/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetRequestHistory",
+    "RelativePath": "api/Requests/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetProductRequestItems",
+    "RelativePath": "api/Requests/product-request-items/{groupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "SubmitMultipleProductRequests",
+    "RelativePath": "api/Requests/product-request/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requests",
+        "Type": "System.Collections.Generic.List\u00601[[APIdIplom.Controllers.RequestsController\u002BProductRequestDto, APIdIplom, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetAllProductRequests",
+    "RelativePath": "api/Requests/product-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetProductById",
+    "RelativePath": "api/Requests/product/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "AddProduct",
+    "RelativePath": "api/Requests/products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BAddProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "RejectProductRequestGroup",
+    "RelativePath": "api/Requests/reject-product-request-group/{groupId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "SaveRequest",
+    "RelativePath": "api/Requests/save-request",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BSaveRequestModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "SaveArchive",
+    "RelativePath": "api/Requests/SaveArchive",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "archiveRequest",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BArchiveRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetSimpleUsers",
+    "RelativePath": "api/Requests/simple-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetStatuses",
+    "RelativePath": "api/Requests/statuses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetUnits",
+    "RelativePath": "api/Requests/units",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Requests/update-product",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "APIdIplom.Controllers.RequestsController\u002BProductUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetProductsWithCharacteristics",
+    "RelativePath": "api/Requests/with-characteristics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.RequestsController",
+    "Method": "GetRequestsWithDetails",
+    "RelativePath": "api/Requests/with-details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "AddUser",
+    "RelativePath": "api/User/adduser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "APIdIplom.Controllers.UserController\u002BUserDtos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "CheckExisting",
+    "RelativePath": "api/User/checkexisting",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "APIdIplom.Controllers.UserController\u002BCheckExistingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/deleteuser/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/getuser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "UpdatePassword",
+    "RelativePath": "api/User/updatepassword/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "passwordDto",
+        "Type": "APIdIplom.Controllers.UserController\u002BUserPasswordDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/User/updateuser/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "editUser",
+        "Type": "APIdIplom.Controllers.UserController\u002BUserUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "GetUserImage",
+    "RelativePath": "api/User/userimage/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.UserController",
+    "Method": "GetUsers",
+    "RelativePath": "api/User/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APIdIplom.Controllers.ExternalApiController",
+    "Method": "ValidateInn",
+    "RelativePath": "external-api/validate-inn/{inn}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inn",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
