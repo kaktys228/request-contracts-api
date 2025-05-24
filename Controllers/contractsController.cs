@@ -615,26 +615,42 @@ ORDER BY p.name;
         }
 
 
-      [HttpPost("export-contract-template")]
+    [HttpPost("export-contract-template")]
 public async Task<IActionResult> ExportContractTemplate([FromBody] ExportContractDto dto)
 {
     await using var connection = new NpgsqlConnection(_connectionString);
     await connection.OpenAsync();
 
-    // Загрузка данных контракта, поставщика
-    var contractCmd = new NpgsqlCommand(@"
-        SELECT 
-            c.contractnumber, c.contractdate, c.description, c.ikz,
-            c.plannedamount, c.actualamount, c.protocolnumber, c.protocoldate,
-            s.name, s.shortname, s.inn, s.kpp, s.kpp_kn, s.ogrn, s.phone, s.email, s.address, s.postaladdress
-        FROM contracts c
-        LEFT JOIN suppliers s ON c.supplierid = s.supplierid
-        WHERE c.contractid = @contractId;
-    ", connection);
-    contractCmd.Parameters.AddWithValue("@contractId", dto.ContractId);
+    var contractQuery = @"
+SELECT 
+    c.contractnumber,
+    c.contractdate,
+    c.description,
+    c.ikz,
+    c.plannedamount,
+    c.actualamount,
+    s.name AS suppliername,
+    s.shortname,
+    s.inn,
+    s.kpp,
+    s.kpp_kn,
+    s.ogrn,
+    s.phone,        
+    s.email,         
+    s.address AS supplieraddress,
+    s.postaladdress,
+    c.protocolnumber,
+    c.protocoldate
+FROM contracts c
+LEFT JOIN suppliers s ON c.supplierid = s.supplierid
+WHERE c.contractid = @contractId;";
 
-    using var reader = await contractCmd.ExecuteReaderAsync();
-    if (!await reader.ReadAsync()) return NotFound("Контракт не найден");
+    var contractCmd = new NpgsqlCommand(contractQuery, connection);
+    contractCmd.Parameters.AddWithValue("@contractId", dto.ContractId);
+    var reader = await contractCmd.ExecuteReaderAsync();
+
+    if (!await reader.ReadAsync())
+        return NotFound("Контракт не найден");
 
     var contractNumber = reader.GetString(0);
     var contractDate = reader.GetDateTime(1);
@@ -642,118 +658,133 @@ public async Task<IActionResult> ExportContractTemplate([FromBody] ExportContrac
     var ikz = reader.IsDBNull(3) ? "__________________________" : reader.GetString(3);
     var plannedAmount = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
     var actualAmount = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
-    var protocolNumber = reader.IsDBNull(6) ? "___" : reader.GetString(6);
-    var protocolDate = reader.IsDBNull(7) ? DateTime.MinValue : reader.GetDateTime(7);
+    var protocolNumber = reader.IsDBNull(16) ? "___" : reader.GetString(16);
+    var protocolDate = reader.IsDBNull(17) ? DateTime.MinValue : reader.GetDateTime(17);
 
     var supplier = new
     {
-        Name = reader.IsDBNull(8) ? "____________" : reader.GetString(8),
-        ShortName = reader.IsDBNull(9) ? "____________" : reader.GetString(9),
-        INN = reader.IsDBNull(10) ? "_______" : reader.GetString(10),
-        KPP = reader.IsDBNull(11) ? "_______" : reader.GetString(11),
-        KPP_KN = reader.IsDBNull(12) ? "_______" : reader.GetString(12),
-        OGRN = reader.IsDBNull(13) ? "_______" : reader.GetString(13),
-        Phone = reader.IsDBNull(14) ? "__________" : reader.GetString(14),
-        Email = reader.IsDBNull(15) ? "__________" : reader.GetString(15),
-        Address = reader.IsDBNull(16) ? "_____________________" : reader.GetString(16),
-        PostalAddress = reader.IsDBNull(17) ? "_____________________" : reader.GetString(17)
+        Name = reader.IsDBNull(6) ? "____________" : reader.GetString(6),
+        ShortName = reader.IsDBNull(7) ? "____________" : reader.GetString(7),
+        INN = reader.IsDBNull(8) ? "_______" : reader.GetString(8),
+        KPP = reader.IsDBNull(9) ? "_______" : reader.GetString(9),
+        KPP_KN = reader.IsDBNull(10) ? "_______" : reader.GetString(10),
+        OGRN = reader.IsDBNull(11) ? "_______" : reader.GetString(11),
+        Phone = reader.IsDBNull(12) ? "___________" : reader.GetString(12),
+        Email = reader.IsDBNull(13) ? "__________" : reader.GetString(13),
+        Address = reader.IsDBNull(14) ? "_____________________" : reader.GetString(14),
+        PostalAddress = reader.IsDBNull(15) ? "_____________________" : reader.GetString(15),
     };
     reader.Close();
 
-    // Заказчик (ID = 1)
-    var customerCmd = new NpgsqlCommand("SELECT name, inn, kpp, ogrn, address FROM customers WHERE customerid = 1", connection);
-    using var customerReader = await customerCmd.ExecuteReaderAsync();
-    if (!await customerReader.ReadAsync()) return NotFound("Заказчик не найден");
+    var customerCmd = new NpgsqlCommand("SELECT name, inn, kpp, ogrn, address FROM customers WHERE customerid = 1;", connection);
+    reader = await customerCmd.ExecuteReaderAsync();
+    if (!await reader.ReadAsync())
+        return NotFound("Заказчик не найден");
 
     var customer = new
     {
-        Name = customerReader.GetString(0),
-        INN = customerReader.GetString(1),
-        KPP = customerReader.GetString(2),
-        OGRN = customerReader.GetString(3),
-        Address = customerReader.GetString(4)
+        Name = reader.GetString(0),
+        INN = reader.GetString(1),
+        KPP = reader.GetString(2),
+        OGRN = reader.GetString(3),
+        Address = reader.GetString(4)
     };
-    customerReader.Close();
+    reader.Close();
 
-    // Банковские реквизиты (ID = 1)
     var bankCmd = new NpgsqlCommand(@"
-        SELECT accountname, bankname, bik, personalaccount, settlementaccount,
-               unifiedaccount, okpo, oktmo, okopf
-        FROM bankaccounts WHERE bankaccountid = 1
-    ", connection);
-    using var bankReader = await bankCmd.ExecuteReaderAsync();
-    if (!await bankReader.ReadAsync()) return NotFound("Банковские реквизиты не найдены");
+SELECT accountname, bankname, bik, personalaccount, settlementaccount,
+       unifiedaccount, okpo, oktmo, okopf
+FROM bankaccounts
+WHERE bankaccountid = 1;", connection);
+    reader = await bankCmd.ExecuteReaderAsync();
+    if (!await reader.ReadAsync())
+        return NotFound("Банковские реквизиты не найдены");
 
     var bank = new
     {
-        AccountName = bankReader.GetString(0),
-        BankName = bankReader.GetString(1),
-        BIK = bankReader.GetString(2),
-        PersonalAccount = bankReader.GetString(3),
-        SettlementAccount = bankReader.GetString(4),
-        UnifiedAccount = bankReader.GetString(5),
-        OKPO = bankReader.GetString(6),
-        OKTMO = bankReader.GetString(7),
-        OKOPF = bankReader.GetString(8)
+        AccountName = reader.GetString(0),
+        BankName = reader.GetString(1),
+        BIK = reader.GetString(2),
+        PersonalAccount = reader.GetString(3),
+        SettlementAccount = reader.GetString(4),
+        UnifiedAccount = reader.GetString(5),
+        OKPO = reader.GetString(6),
+        OKTMO = reader.GetString(7),
+        OKOPF = reader.GetString(8)
     };
-    bankReader.Close();
+    reader.Close();
 
-    // Загрузка шаблона из EmbeddedResource
-    var templateName = dto.Law == "223-ФЗ" ? "Умный контракт 223-ФЗ.docx" : "Умный контракт.docx";
-    var resourcePath = $"APIdIplom.Templates.{templateName}";
-    var assembly = typeof(contractsController).Assembly;
-    using var templateStream = assembly.GetManifestResourceStream(resourcePath);
-    if (templateStream == null) return NotFound("Шаблон не найден");
+    var templateFileName = dto.Law == "223-ФЗ" ? "Умный контракт 223-ФЗ.docx" : "Умный контракт.docx";
+    var resourcePath = $"APIdIplom.Templates.{templateFileName}";
+    using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath);
+    if (stream == null) return NotFound("Шаблон не найден");
+    var doc = DocX.Load(stream);
 
-    var doc = DocX.Load(templateStream);
-    var culture = new CultureInfo("ru-RU");
-    var amount = actualAmount > 0 ? actualAmount : plannedAmount;
-    var sumText = amount.ToString("C", culture);
+    var sumValue = actualAmount > 0 ? actualAmount : plannedAmount;
+    var amountWords = ConvertAmountToWords(sumValue);
+    var amountNumeric = sumValue.ToString("N2") + " руб.";
 
-    // Замены
-    doc.ReplaceText("{AmountNumeric}", amount.ToString("N2") + " руб.");
-    doc.ReplaceText("{AmountWords}", ConvertAmountToWords(amount));
+    var russianCulture = new System.Globalization.CultureInfo("ru-RU");
+    var fullDateText = $"«{contractDate:dd}» {contractDate:MMMM yyyy} года";
+    var protocolDateFormatted = protocolDate != DateTime.MinValue
+        ? $"«{protocolDate:dd}» {protocolDate:MMMM yyyy} года"
+        : "____";
+
+    doc.ReplaceText("{AmountNumeric}", amountNumeric);
+    doc.ReplaceText("{AmountWords}", amountWords);
     doc.ReplaceText("{ContractNumber}", contractNumber);
-    doc.ReplaceText("{ContractDate}", $"«{contractDate:dd}» {contractDate:MMMM yyyy} года");
+    doc.ReplaceText("{ContractDate}", fullDateText);
     doc.ReplaceText("{IKZ}", ikz);
-    doc.ReplaceText("{ContractDescription}", description);
-    doc.ReplaceText("{ProtocolNumber}", protocolNumber);
-    doc.ReplaceText("{ProtocolDate}", protocolDate != DateTime.MinValue ? $"«{protocolDate:dd}» {protocolDate:MMMM yyyy} года" : "____");
-    doc.ReplaceText("{Amount}", sumText);
-    doc.ReplaceText("{FinanceAmount}", amount.ToString("N2"));
-    doc.ReplaceText("{FinanceYear}", contractDate.Year.ToString());
-
     doc.ReplaceText("{CustomerName}", customer.Name);
     doc.ReplaceText("{CustomerINN}", customer.INN);
     doc.ReplaceText("{CustomerKPP}", customer.KPP);
     doc.ReplaceText("{CustomerOGRN}", customer.OGRN);
     doc.ReplaceText("{CustomerAddress}", customer.Address);
-
+    doc.ReplaceText("{ContractDescription}", description);
+    doc.ReplaceText("{SupplierPhone}", supplier.Phone);
+    doc.ReplaceText("{SupplierEmail}", supplier.Email);
     doc.ReplaceText("{SupplierFullName}", supplier.Name);
     doc.ReplaceText("{SupplierShortName}", supplier.ShortName);
+    doc.ReplaceText("{SupplierAddress}", supplier.Address);
+    doc.ReplaceText("{SupplierPostalAddress}", supplier.PostalAddress);
     doc.ReplaceText("{SupplierINN}", supplier.INN);
     doc.ReplaceText("{SupplierKPP}", supplier.KPP);
     doc.ReplaceText("{SupplierKPP_KN}", supplier.KPP_KN);
     doc.ReplaceText("{SupplierOGRN}", supplier.OGRN);
-    doc.ReplaceText("{SupplierPhone}", supplier.Phone);
-    doc.ReplaceText("{SupplierEmail}", supplier.Email);
-    doc.ReplaceText("{SupplierAddress}", supplier.Address);
-    doc.ReplaceText("{SupplierPostalAddress}", supplier.PostalAddress);
-
     doc.ReplaceText("{DeliveryPlace}", "г. Серпухов, ул. Джона Рида, д. 6");
     doc.ReplaceText("{DeliveryTime}", "В течение 10 рабочих дней с даты подписания контракта");
+    doc.ReplaceText("{Amount}", sumValue.ToString("C"));
+    doc.ReplaceText("{ProtocolNumber}", protocolNumber);
+    doc.ReplaceText("{ProtocolDate}", protocolDateFormatted);
+    doc.ReplaceText("{FinanceAmount}", sumValue.ToString("N2"));
+    doc.ReplaceText("{FinanceYear}", contractDate.Year.ToString());
+    doc.ReplaceText("{Bank_AccountName}", bank.AccountName);
+    doc.ReplaceText("{Bank_BankName}", bank.BankName);
+    doc.ReplaceText("{Bank_BIK}", bank.BIK);
+    doc.ReplaceText("{Bank_PersonalAccount}", bank.PersonalAccount);
+    doc.ReplaceText("{Bank_SettlementAccount}", bank.SettlementAccount);
+    doc.ReplaceText("{Bank_UnifiedAccount}", bank.UnifiedAccount);
+    doc.ReplaceText("{Bank_OKPO}", bank.OKPO);
+    doc.ReplaceText("{Bank_OKTMO}", bank.OKTMO);
+    doc.ReplaceText("{Bank_OKOPF}", bank.OKOPF);
 
-    foreach (var p in doc.Paragraphs) p.Font(new Font("Times New Roman")).FontSize(12);
+    foreach (var paragraph in doc.Paragraphs)
+    {
+        paragraph.Font(new Font("Times New Roman")).FontSize(12);
+    }
 
     using var ms = new MemoryStream();
     doc.SaveAs(ms);
 
-    return new JsonResult(new
+    var fileResult = new
     {
         FileName = $"Контракт_{contractNumber}.docx",
         Base64 = Convert.ToBase64String(ms.ToArray())
-    });
+    };
+
+    return new JsonResult(fileResult);
 }
+
 
 
         [HttpPost("export-contract-template_ECP")]
