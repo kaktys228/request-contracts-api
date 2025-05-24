@@ -1543,7 +1543,9 @@ ORDER BY ri.productid;";
             }
 
             // Создание документа
-            var doc = DocX.Create("Служебная_записка.docx");
+             using var ms = new MemoryStream();
+      var doc = DocX.Create(ms); // создаём напрямую в память
+
 
             // Генерация QR-кода
             var qrGenerator = new QRCodeGenerator();
@@ -1825,17 +1827,17 @@ WHERE u.userid = @id";
             }
 
       
-            doc.SaveAs("placeholder"); // генерируем в память ниже
-
-            // Сохраняем документ в массив
-            // Сохраняем документ в массив
             byte[] documentBytes;
-            using (var ms = new MemoryStream())
-            {
-                doc.SaveAs(ms);
-                documentBytes = ms.ToArray();
-            }
+    using (ms)
+    {
+        doc = DocX.Create(ms);
 
+        // ⬇️ тут весь твой код по наполнению doc — как уже написано выше...
+
+        doc.Save(); // сохраняем в тот же поток
+        ms.Position = 0;
+        documentBytes = ms.ToArray();
+    }
           
 
 
