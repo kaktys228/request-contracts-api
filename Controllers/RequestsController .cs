@@ -1547,7 +1547,7 @@ ORDER BY ri.productid;";
 
             // Генерация QR-кода
             var qrGenerator = new QRCodeGenerator();
-            var link = $"https://localhost:7138/create-contract?id={dto.RequestId}";
+var link = $"https://request-contracts-client.onrender.com/create-contract?id={dto.RequestId}";
             var qrData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
             var qrCode = new PngByteQRCode(qrData);
             byte[] qrBytes = qrCode.GetGraphic(20);
