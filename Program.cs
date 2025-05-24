@@ -66,18 +66,18 @@ namespace APIdIplom
 
             builder.Services.AddAuthorization();
 
-      builder.Services.AddCors(options =>
+builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
-    {
-        policy.WithOrigins(
-            "https://localhost:7138", // локально
-            "https://request-contracts-client.onrender.com" // продакшн
-        )
-        .AllowAnyHeader()
-        .AllowAnyMethod();
-    });
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy
+                .AllowAnyOrigin()      // ← разрешает запросы с любых источников
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
 });
+
 
 
             var app = builder.Build();
@@ -87,7 +87,7 @@ namespace APIdIplom
 
 
             app.UseHttpsRedirection();
-            app.UseCors("AllowFrontend");
+app.UseCors("AllowAll"); // 👈 обязательно ДО UseAuthentication и UseAuthorization
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
